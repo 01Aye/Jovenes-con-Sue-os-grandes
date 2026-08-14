@@ -3,27 +3,1132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jóvenes con Sueños Grandes</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <h1>🌟 Jóvenes con Sueños Grandes</h1>
-        <p>Tu aventura de aprendizaje comienza aquí</p>
-    </header>
 
-    <main>
-        <section class="bienvenida">
-            <h2>¡Hola, soñador!</h2>
-            <p>Aprende STEAM, matemáticas, ciencias, valores, lectura, inglés y arte de forma divertida y con amigos.</p>
-            <button id="btn-empezar">¡Empezar mi aventura!</button>
+    <title>JSG | Jóvenes con Sueños Grandes</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =====================================================
+     ONBOARDING
+===================================================== -->
+
+<div id="onboarding" class="onboarding">
+
+    <!-- PASO 1 -->
+    <section class="onboarding-screen active" id="step1">
+
+        <div class="stars-background"></div>
+
+        <div class="onboarding-content">
+
+            <div class="llama-big">🦙</div>
+
+            <h1>¡Bienvenido a JSG!</h1>
+
+            <p>
+                La plataforma donde el conocimiento
+                se convierte en aventura.
+                <br>
+                ¿Listo para explorar?
+            </p>
+
+            <button class="primary-button" onclick="nextStep(2)">
+                🚀 ¡Empecemos!
+            </button>
+
+        </div>
+
+        <div class="progress-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <!-- PASO 2 -->
+    <section class="onboarding-screen" id="step2">
+
+        <div class="onboarding-content">
+
+            <div class="step-icon">👋</div>
+
+            <h1>¿Quién eres?</h1>
+
+            <p>Personalizamos tu experiencia según tu perfil.</p>
+
+            <div class="profile-options">
+
+                <button class="profile-card"
+                        onclick="selectProfile('Primaria', this)">
+
+                    <span>📚</span>
+                    <strong>Primaria</strong>
+                    <small>6–11 años</small>
+
+                </button>
+
+                <button class="profile-card"
+                        onclick="selectProfile('Secundaria', this)">
+
+                    <span>🎓</span>
+                    <strong>Secundaria</strong>
+                    <small>12–17 años</small>
+
+                </button>
+
+                <button class="profile-card"
+                        onclick="selectProfile('Padre', this)">
+
+                    <span>👨‍👩‍👧</span>
+                    <strong>Padre/Madre</strong>
+                    <small>Supervisar</small>
+
+                </button>
+
+            </div>
+
+            <button id="profileContinue"
+                    class="primary-button disabled"
+                    onclick="nextStep(3)">
+
+                Continuar →
+                
+            </button>
+
+        </div>
+
+        <div class="progress-dots">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <!-- PASO 3 -->
+    <section class="onboarding-screen" id="step3">
+
+        <div class="onboarding-content">
+
+            <div class="step-icon">⭐</div>
+
+            <h1>¿Qué te apasiona?</h1>
+
+            <p>Elige al menos 3 áreas para personalizar tus mundos.</p>
+
+            <div class="interest-options">
+
+                <button onclick="toggleInterest(this)">Matemáticas</button>
+                <button onclick="toggleInterest(this)">Ciencias</button>
+                <button onclick="toggleInterest(this)">Programación</button>
+                <button onclick="toggleInterest(this)">IA</button>
+                <button onclick="toggleInterest(this)">Inglés</button>
+                <button onclick="toggleInterest(this)">Lectura</button>
+                <button onclick="toggleInterest(this)">Escritura</button>
+                <button onclick="toggleInterest(this)">Arte</button>
+                <button onclick="toggleInterest(this)">Música</button>
+                <button onclick="toggleInterest(this)">Liderazgo</button>
+                <button onclick="toggleInterest(this)">Ambiente</button>
+                <button onclick="toggleInterest(this)">Astronomía</button>
+
+            </div>
+
+            <button id="interestContinue"
+                    class="primary-button disabled"
+                    onclick="nextStep(4)">
+
+                Continuar (0/3) →
+
+            </button>
+
+        </div>
+
+        <div class="progress-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <!-- PASO 4 -->
+    <section class="onboarding-screen" id="step4">
+
+        <div class="onboarding-content">
+
+            <div class="step-icon">✏️</div>
+
+            <h1>Tu nombre de explorador</h1>
+
+            <p>
+                Con este nombre te conocerán
+                en la comunidad JSG.
+            </p>
+
+            <div class="avatar-preview">
+                🦙
+            </div>
+
+            <input
+                type="text"
+                id="explorerName"
+                class="name-input"
+                placeholder="EjemploHuanca42"
+                maxlength="20"
+            >
+
+            <button class="primary-button"
+                    onclick="finishOnboarding()">
+
+                ¡Ese soy yo! →
+                
+            </button>
+
+        </div>
+
+        <div class="progress-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">🦙</div>
+
+            <div>
+                <strong>JSG</strong>
+                <span>Jóvenes con Sueños Grandes</span>
+            </div>
+
+        </div>
+
+
+        <div class="student-mini">
+
+            <div class="mini-avatar">🦙</div>
+
+            <div class="student-info">
+
+                <strong id="sidebarName">
+                    Explorador
+                </strong>
+
+                <small>
+                    Nv. 1 · ⭐ <span id="sidebarStars">250</span>
+                </small>
+
+            </div>
+
+            <div class="streak">
+                🔥 1
+            </div>
+
+        </div>
+
+
+        <div class="xp-container">
+
+            <div class="xp-label">
+                <span>XP</span>
+                <span>0%</span>
+            </div>
+
+            <div class="xp-bar">
+                <div class="xp-fill"></div>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active"
+                    onclick="showPage('home', this)">
+                🏠
+                <span>Inicio</span>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('courses', this)">
+                📚
+                <span>Cursos</span>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('worlds', this)">
+                🌎
+                <span>Mundos</span>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('community', this)">
+                👥
+                <span>Comunidad</span>
+                <b class="notification">3</b>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('opportunities', this)">
+                🏆
+                <span>Oportunidades</span>
+                <b class="notification yellow">8</b>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('store', this)">
+                🛍️
+                <span>Tienda</span>
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('profile', this)">
+                👤
+                <span>Mi perfil</span>
+            </button>
+
+            <button class="nav-item">
+                👨‍👩‍👧
+                <span>Padres</span>
+            </button>
+
+            <button class="nav-item">
+                ♿
+                <span>Accesibilidad</span>
+            </button>
+
+        </nav>
+
+
+        <div class="daily-mission">
+
+            <small>🎯 MISIÓN DEL DÍA</small>
+
+            <strong>Completa 2 lecciones</strong>
+
+            <div class="mission-progress">
+                <div></div>
+            </div>
+
+            <span>1 / 2 · +80 ⭐</span>
+
+        </div>
+
+
+        <div class="sidebar-footer">
+            JSG v0.1 · Hecho en Perú 🇵🇪
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="mobile-logo">
+                🦙 <strong>JSG</strong>
+            </div>
+
+            <div class="top-title">
+                🦙 <strong>JSG</strong>
+                <span>📚 Cursos</span>
+            </div>
+
+
+            <div class="top-actions">
+
+                <div class="stars-counter">
+                    ⭐ <span id="starsCounter">7,340</span>
+                </div>
+
+                <div class="level">
+                    <small>Nv.24 · XP</small>
+
+                    <div class="level-bar">
+                        <div></div>
+                    </div>
+                </div>
+
+                <div class="streak-counter">
+                    🔥 12
+                </div>
+
+                <div class="notification-icon">
+                    🔔
+                    <b>3</b>
+                </div>
+
+                <div class="top-avatar">
+                    🦙
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HOME -->
+
+        <section id="page-home" class="page active-page">
+
+            <div class="progress-banner">
+
+                <div class="progress-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h3>Tu progreso esta semana</h3>
+
+                    <p>
+                        ✅ 3 cursos en progreso
+                        &nbsp;&nbsp;
+                        🏅 1 completado esta semana
+                        &nbsp;&nbsp;
+                        ⭐ +380 estrellas ganadas
+                    </p>
+
+                </div>
+
+                <button onclick="showPage('profile')">
+                    Ver perfil
+                </button>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Continúa aprendiendo 🚀</h2>
+                    <p>Explora nuevos conocimientos.</p>
+                </div>
+
+                <button onclick="showPage('courses')">
+                    Ver todos →
+                </button>
+
+            </div>
+
+
+            <div class="course-grid">
+
+                <article class="course-card">
+
+                    <div class="course-image yellow-bg">
+                        📖
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="course-tags">
+                            Historia
+                            <span>Principiante</span>
+                        </div>
+
+                        <h3>Cuentos del Ande</h3>
+
+                        <p>Escritora Valentina</p>
+
+                        <div class="course-stats">
+                            ⏱️ 5h
+                            👥 9,200
+                            ⭐ 4.8
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 120</strong>
+
+                            <button onclick="enrollCourse(this)">
+                                Inscribirme
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-image purple-bg">
+                        🐍
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="featured">
+                            ⭐ Destacado
+                        </div>
+
+                        <div class="course-tags">
+                            Programación
+                            <span class="orange">Intermedio</span>
+                        </div>
+
+                        <h3>Python para Exploradores</h3>
+
+                        <p>Ing. Carlos Ruiz</p>
+
+                        <div class="course-stats">
+                            ⏱️ 12h
+                            👥 8,900
+                            ⭐ 4.8
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 320</strong>
+
+                            <button
+                                class="purple-button"
+                                onclick="enrollCourse(this)">
+
+                                Inscribirme
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-image peach-bg">
+                        🏛️
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="course-tags">
+                            Historia
+                            <span>Principiante</span>
+                        </div>
+
+                        <h3>Historia del Imperio Inca</h3>
+
+                        <p>Dr. Manuel Quispe</p>
+
+                        <div class="course-stats">
+                            ⏱️ 7h
+                            👥 6,700
+                            ⭐ 4.9
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 160</strong>
+
+                            <button
+                                class="continue-button"
+                                onclick="continueCourse(this)">
+
+                                ▶ Continuar 40%
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-image pink-bg">
+                        🤖
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="featured">
+                            ⭐ Destacado
+                        </div>
+
+                        <div class="course-tags">
+                            Tecnología
+                            <span>Principiante</span>
+                        </div>
+
+                        <h3>Introducción a la IA</h3>
+
+                        <p>Lumi AI</p>
+
+                        <div class="course-stats">
+                            ⏱️ 8h
+                            👥 5,300
+                            ⭐ 4.9
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 220</strong>
+
+                            <button onclick="enrollCourse(this)">
+                                Inscribirme
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-image blue-bg">
+                        🔬
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="course-tags">
+                            Ciencias
+                            <span>Intermedio</span>
+                        </div>
+
+                        <h3>Experimentos increíbles</h3>
+
+                        <p>Club JSG</p>
+
+                        <div class="course-stats">
+                            ⏱️ 6h
+                            👥 4,800
+                            ⭐ 5.0
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 180</strong>
+
+                            <button onclick="enrollCourse(this)">
+                                Inscribirme
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-image green-bg">
+                        🌱
+                    </div>
+
+                    <div class="course-content">
+
+                        <div class="course-tags">
+                            Ambiente
+                            <span>Principiante</span>
+                        </div>
+
+                        <h3>Guardianes del planeta</h3>
+
+                        <p>Comunidad JSG</p>
+
+                        <div class="course-stats">
+                            ⏱️ 4h
+                            👥 7,100
+                            ⭐ 4.9
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <strong>⭐ 150</strong>
+
+                            <button onclick="enrollCourse(this)">
+                                Inscribirme
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
         </section>
+
+
+        <!-- COURSES -->
+
+        <section id="page-courses" class="page">
+
+            <div class="page-heading">
+
+                <h1>📚 Cursos</h1>
+
+                <p>
+                    Aprende, explora y gana Stars.
+                </p>
+
+            </div>
+
+            <div class="category-buttons">
+
+                <button class="category active">Todos</button>
+                <button class="category">Matemáticas</button>
+                <button class="category">Ciencias</button>
+                <button class="category">Programación</button>
+                <button class="category">Inglés</button>
+                <button class="category">Arte</button>
+                <button class="category">Liderazgo</button>
+
+            </div>
+
+            <div class="big-message">
+
+                🚀
+
+                <h2>¡Tu aventura comienza aquí!</h2>
+
+                <p>
+                    Explora nuestros cursos y encuentra
+                    algo que te apasione.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORLDS -->
+
+        <section id="page-worlds" class="page">
+
+            <div class="page-heading">
+
+                <h1>🌎 Tus mundos</h1>
+
+                <p>
+                    El conocimiento es un universo y tú eres
+                    un explorador curioso.
+                </p>
+
+            </div>
+
+            <div class="world-grid">
+
+                <div class="world-card math">
+                    📚
+                    <h2>Mundo Matemático</h2>
+                    <p>Resuelve misiones y desafíos.</p>
+                    <span>🔒 Nivel 5</span>
+                </div>
+
+                <div class="world-card science">
+                    🧪
+                    <h2>Mundo Ciencia</h2>
+                    <p>Descubre cómo funciona el mundo.</p>
+                    <span>⭐ Disponible</span>
+                </div>
+
+                <div class="world-card space">
+                    🚀
+                    <h2>Mundo Espacial</h2>
+                    <p>Explora el universo.</p>
+                    <span>🔒 Nivel 10</span>
+                </div>
+
+                <div class="world-card nature">
+                    🌱
+                    <h2>Mundo Naturaleza</h2>
+                    <p>Conviértete en guardián del planeta.</p>
+                    <span>⭐ Disponible</span>
+                </div>
+
+                <div class="world-card technology">
+                    🤖
+                    <h2>Mundo Tecnología</h2>
+                    <p>Programa, crea e innova.</p>
+                    <span>⭐ Disponible</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMMUNITY -->
+
+        <section id="page-community" class="page">
+
+            <div class="page-heading">
+
+                <h1>👥 Comunidad JSG</h1>
+
+                <p>
+                    Comparte, pregunta y aprende con otros exploradores.
+                </p>
+
+            </div>
+
+            <div class="community-box">
+
+                <div class="post-box">
+
+                    <div class="mini-avatar">🦙</div>
+
+                    <input
+                        type="text"
+                        id="postInput"
+                        placeholder="¿Qué quieres compartir con la comunidad?"
+                    >
+
+                    <button onclick="createPost()">
+                        Publicar
+                    </button>
+
+                </div>
+
+
+                <div id="posts">
+
+                    <article class="post">
+
+                        <div class="post-user">
+                            🐹
+                            <strong>Valentina</strong>
+                            <span>hace 10 min</span>
+                        </div>
+
+                        <p>
+                            ¡Hoy terminé mi primer proyecto de ciencias! 🔬✨
+                        </p>
+
+                        <div class="post-actions">
+                            ❤️ 24
+                            💬 5
+                            ⭐ 12
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OPPORTUNITIES -->
+
+        <section id="page-opportunities" class="page">
+
+            <div class="page-heading">
+
+                <h1>🏆 Oportunidades</h1>
+
+                <p>
+                    Encuentra oportunidades para seguir creciendo.
+                </p>
+
+            </div>
+
+            <div class="opportunity-grid">
+
+                <div class="opportunity-card">
+                    🥇
+                    <h3>Concursos nacionales</h3>
+                    <p>Compite y demuestra tu talento.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    🎓
+                    <h3>Becas</h3>
+                    <p>Becas nacionales e internacionales.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    🔬
+                    <h3>Ferias científicas</h3>
+                    <p>Presenta tus proyectos.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    💻
+                    <h3>Hackathons</h3>
+                    <p>Crea soluciones usando tecnología.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    🤝
+                    <h3>Voluntariados</h3>
+                    <p>Ayuda a tu comunidad.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    🏕️
+                    <h3>Campamentos</h3>
+                    <p>Aprende y conoce nuevos amigos.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STORE -->
+
+        <section id="page-store" class="page">
+
+            <div class="page-heading">
+
+                <h1>🛍️ Tienda JSG</h1>
+
+                <p>
+                    Personaliza tu explorador usando Stars.
+                </p>
+
+            </div>
+
+            <div class="store-grid">
+
+                <div class="store-item">
+
+                    <div>🎩</div>
+
+                    <h3>Sombrero explorador</h3>
+
+                    <strong>⭐ 500</strong>
+
+                    <button onclick="buyItem(500)">
+                        Comprar
+                    </button>
+
+                </div>
+
+                <div class="store-item">
+
+                    <div>🎒</div>
+
+                    <h3>Mochila espacial</h3>
+
+                    <strong>⭐ 800</strong>
+
+                    <button onclick="buyItem(800)">
+                        Comprar
+                    </button>
+
+                </div>
+
+                <div class="store-item">
+
+                    <div>🪽</div>
+
+                    <h3>Alas mágicas</h3>
+
+                    <strong>⭐ 1,200</strong>
+
+                    <button onclick="buyItem(1200)">
+                        Comprar
+                    </button>
+
+                </div>
+
+                <div class="store-item">
+
+                    <div>🐹</div>
+
+                    <h3>Mascota cuy</h3>
+
+                    <strong>⭐ 1,000</strong>
+
+                    <button onclick="buyItem(1000)">
+                        Comprar
+                    </button>
+
+                </div>
+
+                <div class="store-item">
+
+                    <div>👓</div>
+
+                    <h3>Lentes futuristas</h3>
+
+                    <strong>⭐ 700</strong>
+
+                    <button onclick="buyItem(700)">
+                        Comprar
+                    </button>
+
+                </div>
+
+                <div class="store-item">
+
+                    <div>✨</div>
+
+                    <h3>Marco de estrellas</h3>
+
+                    <strong>⭐ 900</strong>
+
+                    <button onclick="buyItem(900)">
+                        Comprar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section id="page-profile" class="page">
+
+            <div class="profile-header">
+
+                <div class="profile-avatar">
+                    🦙
+                </div>
+
+                <div>
+
+                    <h1 id="profileName">
+                        Explorador
+                    </h1>
+
+                    <p>
+                        🌎 Explorador JSG
+                    </p>
+
+                </div>
+
+                <button>
+                    ✏️ Editar perfil
+                </button>
+
+            </div>
+
+
+            <div class="profile-stats">
+
+                <div>
+                    <strong>24</strong>
+                    <span>Nivel</span>
+                </div>
+
+                <div>
+                    <strong id="profileStars">7,340</strong>
+                    <span>Stars</span>
+                </div>
+
+                <div>
+                    <strong>12</strong>
+                    <span>Racha</span>
+                </div>
+
+                <div>
+                    <strong>18</strong>
+                    <span>Cursos</span>
+                </div>
+
+                <div>
+                    <strong>7</strong>
+                    <span>Insignias</span>
+                </div>
+
+            </div>
+
+
+            <div class="profile-sections">
+
+                <div class="profile-panel">
+
+                    <h2>🏅 Mis insignias</h2>
+
+                    <div class="badges">
+
+                        <span>🏆</span>
+                        <span>🧠</span>
+                        <span>🔬</span>
+                        <span>🚀</span>
+                        <span>🌱</span>
+                        <span>💻</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-panel">
+
+                    <h2>📚 Mi progreso</h2>
+
+                    <p>
+                        Horas estudiadas
+                    </p>
+
+                    <strong>
+                        42 horas
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
 
-    <footer>
-        <p>Hecho con ❤️ para los jóvenes del Perú | Español & Quechua</p>
-    </footer>
+</div>
 
-    <script src="js/main.js"></script>
+
+<div id="toast" class="toast">
+    ⭐ ¡Genial!
+</div>
+
+
+<script src="js/app.js"></script>
+
 </body>
 </html>
